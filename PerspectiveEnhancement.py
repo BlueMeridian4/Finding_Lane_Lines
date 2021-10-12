@@ -13,14 +13,14 @@ class PerspectiveEnhancement:
     
     def __init__(self):
         """Init PerspectiveEnhancement."""
-        self.src = np.float32([(550, 460),  # top-left
-                               (150, 720),  # bottom-left
-                               (1200, 720), # bottom-right
-                               (770, 460)]) # top-right
-        self.dst = np.float32([(100, 0),
-                               (100, 720),
-                               (1100, 720),
-                               (1100, 0)])
+        src = np.float32([[0, 673],      # top-left
+                          [1280, 673],   # bottom-left
+                          [500, 450],    # bottom-right
+                          [780, 450]])   # top-right
+        dst = np.float32([[300, 720],
+                          [980, 720], 
+                          [0, 0], 
+                          [1280, 0]])
         self.M = cv2.getPerspectiveTransform(self.src, self.dst)
         self.M_inv = cv2.getPerspectiveTransform(self.dst, self.src)
         
